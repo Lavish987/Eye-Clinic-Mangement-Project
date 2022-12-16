@@ -25,8 +25,8 @@ export default function Header(props) {
         
       </ul>
       <form className="d-flex" role="search">
-        {props.l? <Link className="btn btn-outline-success" type="submit" to={"/login"}>Login</Link>:""}
-        {props.r?<Link className="btn btn-outline-success" type="submit" to={"/signup"}>Register</Link>:""}
+        {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""}
+        {props.r?<Link className="btn btn-outline-success" custom_btn type="submit" to={"/signup"}>Register</Link>:""}
       </form>
     </div>
   </div>

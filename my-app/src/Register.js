@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Header from './MyComponent/Header'
 import Footer from './MyComponent/Footer'
 import {Grid,Paper,TextField,} from'@material-ui/core'
@@ -52,41 +52,146 @@ function Register() {
     const paperStyle={padding:20,height:'60vh',width:280,margin:"20px auto"}
   const btnStyle={margin:"10px 0px -5px"}
   return (
-    <div>
-        <Header r={false} h={false}/>
-      <Grid>
-           <Paper  elevation={10} style={paperStyle}>
-            <Grid align='left'>
-            <h1>Sign up</h1>
-            </Grid>
-            <form onSubmit={handleSubmit}>
-          <input type="text" id="margin-dense" margin="dense"  label='Full Name' variant= 'outlined' value={name} placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)} fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense" label='Email' variant= 'outlined' value={email} placeholder='Enter your Email' onChange={(e) => setEmail(e.target.value)} fullwidth required/>
-          <input  id="margin-dense" margin="dense"  label='Password' variant= 'outlined'value={password} placeholder='Enter your password'  onChange={(e) => setPassword(e.target.value)}type='password' fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Mobile' variant= 'outlined' value={mobile} placeholder='Mobile NO.' onChange={(e) => setMobile(e.target.value)} fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={address} placeholder='Address' onChange={(e) => setAddress(e.target.value)}fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={age} placeholder='Age' onChange={(e) => setAge(e.target.value)}fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={weight} placeholder='Weight' onChange={(e) => setWeight(e.target.value)}fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={height} placeholder='Height' onChange={(e) => setHeight(e.target.value)}fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={gender} placeholder='Gender' onChange={(e) => setGender(e.target.value)}fullwidth required/>
-          <input type="text" id="margin-dense" margin="dense"  label='Address' variant= 'outlined' value={occupation} placeholder='Occupation' onChange={(e) => setOccupation(e.target.value)}fullwidth required/>
-          <Button type='submit' fullwidth variant='contained' color='success' style={btnStyle} >Create an account</Button> 
-          <div >{message ? <p>{message}</p> : null}</div>
-          </form>
-          <div>
-            <p style={{marginTop: "20px"}}>
-              Already have an account?
-              <Link type="submit" to={"/login"}>Login</Link>
-            </p>
+    
+      
+     
 
+    
+
+<div>
+    <Header r={false} h={false}/>
+<div className='reg_adjust'>
+      {/* <div className="container py-5 h-100"> */}
+      <div className="row d-flex justify-content-center align-items-center h-100">
+        <div className="col">
+          <div className="card card-registration my-4">
+            <div className="row g-0">
+              <div className="col-xl-6 d-none d-xl-block">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                  alt="Sample photo" className="img-fluid"
+                  style={{ borderTopLeftRadius: ".25rem", borderBottomLeftRadius: ".25rem" }} />
+              </div>
+              <div className="col-xl-6">
+                <div className="card-body p-md-5 text-black">
+                  <h3 className="mb-5 text-uppercase"> Registration Form</h3>
+
+                  <div className="row">
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input type="text" id="form3Example1m" className="form-control form-control-lg" />
+                        <label className="form-label" for="form3Example1m"> Name</label>
+                      </div>
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input type="text" id="form3Example1n" className="form-control form-control-lg" />
+                        <label className="form-label" for="form3Example1n">Password</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input type="text" id="form3Example1m1" className="form-control form-control-lg" />
+                        <label className="form-label" for="form3Example1m1">Height</label>
+                      </div>
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                        <input type="text" id="form3Example1n1" className="form-control form-control-lg" />
+                        <label className="form-label" for="form3Example1n1">Age</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="text" id="form3Example8" className="form-control form-control-lg" />
+                    <label className="form-label" for="form3Example8">Occupation</label>
+                  </div>
+
+                  <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+                    <h6 className="mb-0 me-4"> Gender</h6>
+
+                    <div className="form-check form-check-inline mb-0 me-4">
+                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                        value="option1" />
+                      <label className="form-check-label" for="femaleGender">Female</label>
+                    </div>
+
+                    <div className="form-check form-check-inline mb-0 me-4">
+                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                        value="option2" />
+                      <label className="form-check-label" for="maleGender">Male</label>
+                    </div>
+
+                    <div className="form-check form-check-inline mb-0">
+                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
+                        value="option3" />
+                      <label className="form-check-label" for="otherGender">Other</label>
+                    </div>
+
+                  </div>
+
+                  {/* <div className="row">
+
+                    <div className="col-md-6 mb-4">
+
+                      <select className="select">
+                        <option value="1">City</option>
+                        <option value="2">Option 1</option>
+                        <option value="3">Option 2</option>
+                        <option value="4">Option 3</option>
+                      </select>
+
+                    </div>
+                  </div> */}
+
+                  <div className="form-outline mb-4">
+                    <input type="text" id="form3Example9" className="form-control form-control-lg" />
+                    <label className="form-label" for="form3Example9">Mobile</label>
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="text" id="form3Example90" className="form-control form-control-lg" />
+                    <label className="form-label" for="form3Example90">Address</label>
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="text" id="form3Example99" className="form-control form-control-lg" />
+                    <label className="form-label" for="form3Example99">Email ID</label>
+                  </div>
+
+                  <div className="form-outline mb-4">
+                    <input type="text" id="form3Example97" className="form-control form-control-lg" />
+                    <label className="form-label" for="form3Example97">Weight</label>
+                  </div>
+
+                  <div className="d-flex justify-content-end pt-3">
+                    <button type="button" className="btn btn-light btn-lg">Reset all</button>
+                    <button type="button" className="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </div>
+
+                </div>
+              </div>
+            </div>
           </div>
-          
-           </Paper>
-      </Grid>
-        <Footer/>
-
+        </div>
+      </div>
     </div>
+    </div>
+
   )
+
+
+
+
+
+
+
+
+
 }
 
 export default Register;

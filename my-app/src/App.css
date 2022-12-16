@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+.custom_btn
+{
+  padding: 4px;
+  margin:5px;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: .75em;
+  padding-right: .75em;
+  }
