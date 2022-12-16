@@ -49,8 +49,6 @@ function Register() {
     }
   };
 
-    const paperStyle={padding:20,height:'60vh',width:280,margin:"20px auto"}
-  const btnStyle={margin:"10px 0px -5px"}
   return (
     
       
@@ -74,105 +72,88 @@ function Register() {
               <div className="col-xl-6">
                 <div className="card-body p-md-5 text-black">
                   <h3 className="mb-5 text-uppercase"> Registration Form</h3>
-
+                  <form onSubmit={handleSubmit}>
                   <div className="row">
-                    <div className="col-md-6 mb-4">
+                    <div className="">
                       <div className="form-outline">
-                        <input type="text" id="form3Example1m" className="form-control form-control-lg" />
-                        <label className="form-label" for="form3Example1m"> Name</label>
+                      <label className="form-label" for="form3Example1m"> Name</label>
+                        <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)} required/>
                       </div>
                     </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input type="text" id="form3Example1n" className="form-control form-control-lg" />
-                        <label className="form-label" for="form3Example1n">Password</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input type="text" id="form3Example1m1" className="form-control form-control-lg" />
-                        <label className="form-label" for="form3Example1m1">Height</label>
-                      </div>
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <div className="form-outline">
-                        <input type="text" id="form3Example1n1" className="form-control form-control-lg" />
-                        <label className="form-label" for="form3Example1n1">Age</label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="form-outline mb-4">
-                    <input type="text" id="form3Example8" className="form-control form-control-lg" />
-                    <label className="form-label" for="form3Example8">Occupation</label>
-                  </div>
-
-                  <div className="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-                    <h6 className="mb-0 me-4"> Gender</h6>
-
-                    <div className="form-check form-check-inline mb-0 me-4">
-                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                        value="option1" />
-                      <label className="form-check-label" for="femaleGender">Female</label>
-                    </div>
-
-                    <div className="form-check form-check-inline mb-0 me-4">
-                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                        value="option2" />
-                      <label className="form-check-label" for="maleGender">Male</label>
-                    </div>
-
-                    <div className="form-check form-check-inline mb-0">
-                      <input className="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                        value="option3" />
-                      <label className="form-check-label" for="otherGender">Other</label>
-                    </div>
-
-                  </div>
-
-                  {/* <div className="row">
-
-                    <div className="col-md-6 mb-4">
-
-                      <select className="select">
-                        <option value="1">City</option>
-                        <option value="2">Option 1</option>
-                        <option value="3">Option 2</option>
-                        <option value="4">Option 3</option>
-                      </select>
-
-                    </div>
-                  </div> */}
-
-                  <div className="form-outline mb-4">
-                    <input type="text" id="form3Example9" className="form-control form-control-lg" />
-                    <label className="form-label" for="form3Example9">Mobile</label>
-                  </div>
-
-                  <div className="form-outline mb-4">
-                    <input type="text" id="form3Example90" className="form-control form-control-lg" />
-                    <label className="form-label" for="form3Example90">Address</label>
-                  </div>
-
-                  <div className="form-outline mb-4">
-                    <input type="text" id="form3Example99" className="form-control form-control-lg" />
+                    <div className="form-outline mb-4">
                     <label className="form-label" for="form3Example99">Email ID</label>
+                    <input type="Email" id="form3Example99" className="form-control form-control-lg" value={email} placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} required/>
+                    
+                  </div>
+
+                    <div className="">
+                      <div className="form-outline">
+                      <label className="form-label" for="form3Example1n">Password</label>
+                        <input type="password" id="form3Example1n" className="form-control form-control-lg" value={password} placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} required/>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-outline mb-4">
+                  <label className="form-label" for="form3Example9">Mobile</label>
+                    <input type="text" id="form3Example9" className="form-control form-control-lg" value={mobile} placeholder='Enter Mobile NO.' onChange={(e) => setMobile(e.target.value)} required/>
+                    
+                  </div>
+
+
+                  <div className="row">
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                      <label className="form-label" for="form3Example1m1">Height</label>
+                        <input type="text" id="form3Example1m1" className="form-control form-control-lg" value={height} placeholder='Enter Height' onChange={(e) => setHeight(e.target.value)} required/>
+                        
+                      </div>
+                    </div>
+                   
+                    <div className="col-md-6 mb-4">
+                      <div className="form-outline">
+                      <label className="form-label" for="form3Example1n1">Age</label>
+                        <input type="text" id="form3Example1n1" className="form-control form-control-lg" value={age} placeholder='Enter Age' onChange={(e) => setAge(e.target.value)} required/>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-outline mb-4">
+                  <label className="form-label" for="form3Example97">Weight</label>
+                    <input type="text" id="form3Example97" className="form-control form-control-lg" value={weight} placeholder='Enter Weight' onChange={(e) => setWeight(e.target.value)} required/>
+                   
                   </div>
 
                   <div className="form-outline mb-4">
-                    <input type="text" id="form3Example97" className="form-control form-control-lg" />
-                    <label className="form-label" for="form3Example97">Weight</label>
+                  <label className="form-label" for="form3Example8">Occupation</label>
+                    <input type="text" id="form3Example8" className="form-control form-control-lg" value={occupation} placeholder='Enter Occupation' onChange={(e) => setOccupation(e.target.value)} required/>
+                    
                   </div>
+
+                  <div className="form-outline mb-4">
+                  <label className="form-label" for="form3Example8">Gender</label>
+                    <input type="text" id="form3Example8" className="form-control form-control-lg" value={gender} placeholder='Enter Gender' onChange={(e) => setGender(e.target.value)} required/>
+                    
+                  </div>
+
+                 
+
+
+                  <div className="form-outline mb-4">
+                  <label className="form-label" for="form3Example90">Address</label>
+                    <input type="text" id="form3Example90" className="form-control form-control-lg" value={address} placeholder='Enter Address' onChange={(e) => setAddress(e.target.value)} required/>
+                    
+                  </div>
+
+
 
                   <div className="d-flex justify-content-end pt-3">
                     <button type="button" className="btn btn-light btn-lg">Reset all</button>
-                    <button type="button" className="btn btn-warning btn-lg ms-2">Submit form</button>
+                    <button type="submit" className="btn btn-warning btn-lg ms-2">Submit form</button>
                   </div>
 
+                  <div >{message ? <p>{message}</p> : null}</div>
+              </form>
                 </div>
               </div>
             </div>
