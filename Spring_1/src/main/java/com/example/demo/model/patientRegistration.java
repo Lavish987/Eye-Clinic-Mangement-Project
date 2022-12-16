@@ -13,6 +13,14 @@ private String Name;
 @Id
 @Column(name="email")
 private String Email;
+public String getGender() {
+	return Gender;
+}
+public void setGender(String gender) {
+	Gender = gender;
+}
+@Column(name="gender")
+private String Gender;
 @Column(name="password1")
 private String Password;
 @Column(name="age")
@@ -30,11 +38,13 @@ private String Address;
 public patientRegistration() {
 	
 }
-public patientRegistration(String name, String email, String password, int age, String occupation, long height,
-		long weight, String mobile, String address) {
+
+public patientRegistration(String name, String email, String gender, String password, int age, String occupation,
+		long height, long weight, String mobile, String address) {
 	super();
 	Name = name;
 	Email = email;
+	Gender = gender;
 	Password = password;
 	Age = age;
 	Occupation = occupation;

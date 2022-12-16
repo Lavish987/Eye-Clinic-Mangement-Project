@@ -11,7 +11,7 @@ export default function Footer() {
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h4 className='text-uppercase fw-bold mb-3'style={{paddingTop:"50px"}}>
                 <MDBIcon icon="gem" className="me-3" />
-                Neo Eye Clinic 
+                Diana Eye Clinic 
               </h4>
               <p>
                 Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
@@ -91,7 +91,7 @@ export default function Footer() {
       <div className='text-center p-2' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
         © 2022 Copyright:
         <a className='text-reset fw-bold' href='#'>
-          NeoClinic.com
+          DianaClinic.com
         </a>
       </div>
     </MDBFooter>
