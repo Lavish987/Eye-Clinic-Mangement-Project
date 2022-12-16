@@ -1,38 +1,56 @@
 import React from 'react'
 import Header from './MyComponent/Header'
-import Footer from './MyComponent/Footer'
-import {Box, Grid,Paper,TextField,} from'@material-ui/core'
+
+import { Box, Grid, Paper, TextField, } from '@material-ui/core'
 import Button from '@mui/material/Button';
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Login() {
-    const paperStyle={padding:20,height:'60vh',width:280,margin:"20px auto"}
-  const btnStyle={margin:"10px 0px -5px"}
+  const paperStyle = { padding: 20, height: '60vh', width: 280, margin: "20px auto" }
+  const btnStyle = { margin: "10px 0px -5px" }
   return (
     <div>
-        <Header l={false} h={false} />
-
-      <Grid>
-           <Paper  elevation={10} style={paperStyle}>
-            <Grid align='left'>
-            <h1>Log In</h1>
-            </Grid>
-          <TextField id="margin-dense" margin="dense" label='Email' variant= 'outlined' placeholder='Enter your Email' fullwidth required/>
-          <TextField id="margin-dense" margin="dense"  label='Password' variant= 'outlined'placeholder='Enter your password'  type='password' fullwidth required/>
-          <Button type='submit' fullwidth variant='contained' color='success' style={btnStyle} >Sign In</Button> 
-          <Box >
-            <p style={{marginTop: "20px"}}>
-              Not having an account?
-              <Link type="submit" to={"/signup"}>Signup</Link>
-            </p>
-          </Box>
-           </Paper>
-      </Grid>
-  )
+      <Header l={false} h={false} />
 
 
 
-        <Footer/>
+
+      <div className='login_form'>
+
+        <div className="Auth-form-container">
+          <form className="Auth-form">
+            <div className="Auth-form-content">
+              <h3 className="Auth-form-title">Sign In</h3>
+              <div className="form-group mt-3">
+                <label>Email address</label>
+                <input
+                  type="email"
+                  className="form-control mt-1"
+                  placeholder="Enter email"
+                />
+              </div>
+              <div className="form-group mt-3">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control mt-1"
+                  placeholder="Enter password"
+                />
+              </div>
+              <div className="d-grid gap-2 mt-3">
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </div>
+              <p className="forgot-password text-right mt-2">
+                 <Link  to={"/signup"}>Sign Up?</Link>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      )
+
     </div>
   )
 }
