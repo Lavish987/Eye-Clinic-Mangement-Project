@@ -1,5 +1,6 @@
 import './App.css';
 import Home from './Home';
+import DoctorLogin from './MyComponent/DoctorLogin';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -20,6 +21,11 @@ function App() {
       path: "/login",
       element: <Login/>,
     },
+    {
+      path: "/doctor",
+      element: <DoctorLogin/>,
+    },
+
     
   ]);
   return (

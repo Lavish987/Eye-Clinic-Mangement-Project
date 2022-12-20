@@ -74,7 +74,6 @@ function Login() {
                   Submit
                 </button>
               </div>
-              
               <p className="forgot-password text-right mt-2">
                  <Link  to={"/signup"}>Sign Up?</Link>
               </p>
