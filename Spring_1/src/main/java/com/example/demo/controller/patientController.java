@@ -22,6 +22,7 @@ public class patientController {
 	
 	@GetMapping("get")
 	public List<patientRegistration> getPatients(){
+		System.out.println("Hello");
 		return this.repo.findAll();
 	}
 	@PostMapping("register")

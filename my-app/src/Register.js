@@ -4,8 +4,9 @@ import Footer from './MyComponent/Footer'
 import {Grid,Paper,TextField,} from'@material-ui/core'
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import userEvent from '@testing-library/user-event';
 
 function Register() {
   const [name,setName]=useState("");
@@ -19,6 +20,7 @@ function Register() {
   const [password,setPassword]=useState("");
   const [address,setAddress]=useState("");
   const [message,setMessage]=useState("");
+  const [err, setErr] = useState("")
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -48,7 +50,45 @@ function Register() {
       console.log(err);
     }
   };
+  const reset=()=>{
+    setName("");
+         setEmail("");
+         setAddress("");
+         setMobile("");
+         setPassword("");
+         setAge("");
+         setGender("");
+         setWeight("");
+         setHeight("");
+         setOccupation("");
+         setErr("");
+  }
+  const validateUser=()=>{
+    if (email && data){
+    data.forEach(row=>{
+      if(row.email===email){
+        setErr('User is already exists')
+      }
+      // if (err !== ""){
+      // reset()
+      // }
+    })
+  .catch(err=>{
+    console.log(err);
+  })
+    }
+  }
+  const [data,setData]=useState([]);
+  useEffect(()=>{
+    
+    axios.get("http://localhost:8080/patient/get").then((response)=>{
+  console.log(response);
+  setData(response.data);
+  });
 
+  },[])
+  
+  
   return (
     
       
@@ -82,14 +122,14 @@ function Register() {
                     </div>
                     <div className="form-outline mb-4">
                     <label className="form-label" for="form3Example99">Email ID</label>
-                    <input type="Email" id="form3Example99" className="form-control form-control-lg" value={email} placeholder='Enter Email' onChange={(e) => setEmail(e.target.value)} required/>
-                    
+                    <input type="Email" id="form3Example99" className="form-control form-control-lg" value={email} placeholder='Enter Email'  onChange={(e) => {setErr("") ;setEmail(e.target.value)}} required/>
+                    {err && <p> {err}</p>}
                   </div>
 
                     <div className="">
                       <div className="form-outline">
                       <label className="form-label" for="form3Example1n">Password</label>
-                        <input type="password" id="form3Example1n" className="form-control form-control-lg" value={password} placeholder='Enter Password' onChange={(e) => setPassword(e.target.value)} required/>
+                        <input type="password" id="form3Example1n" className="form-control form-control-lg" value={password} placeholder='Enter Password' onFocus={validateUser}  onChange={(e) => setPassword(e.target.value)} required/>
                         
                       </div>
                     </div>
@@ -148,12 +188,13 @@ function Register() {
 
 
                   <div className="d-flex justify-content-end pt-3">
-                    <button type="button" className="btn btn-light btn-lg">Reset all</button>
+                    <button type="button" className="btn btn-light btn-lg" onClick={reset}>Reset all</button>
                     <button type="submit" className="btn btn-warning btn-lg ms-2">Submit form</button>
                   </div>
 
                   <div >{message ? <p>{message}</p> : null}</div>
               </form>
+
                 </div>
               </div>
             </div>
@@ -161,7 +202,9 @@ function Register() {
         </div>
       </div>
     </div>
+
     </div>
+
 
   )
 
