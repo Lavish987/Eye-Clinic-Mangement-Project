@@ -36,7 +36,7 @@ export default function Header(props) {
 
         {props.l? 
         <>
-          <Button onClick={() => handleModal()}> Click Me </Button>
+          <Link className="btn btn-outline-success" custom_btn type="submit" onClick={() => handleModal()}>Login </Link>
           <Modal show={show} onHide={()=>handleModal()}>
           
             <Modal.Header closeButton>
