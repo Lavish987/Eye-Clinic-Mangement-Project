@@ -44,7 +44,7 @@ export default function Footer() {
             </MDBCol>
 
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Useful links</h6>
+              <h6 className='text-uppercase fw-bold mb-4 mt-4'>Useful links</h6>
               <p>
                 <a href='#!' className='text-reset'>
                   Pricing
@@ -68,14 +68,14 @@ export default function Footer() {
             </MDBCol>
 
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-md-0 mb-1'>
-              <h6 className='text-uppercase fw-bold mb-4'>Contact</h6>
+              <h6 className='text-uppercase fw-bold mb-4 mt-4'>Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-1" />
-                        Lavish Chaddha SoftwareEngineer@Persistent System ,Pune
+                    Lavish Chaddha SoftwareEngineer@Persistent System ,Pune
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-1" />
-                lavish_chaddha@persistent.com
+              lavish_chaddha@persistent.com
               </p>
               <p>
                 <MDBIcon icon="phone" className="me-1" /> 9761270766
