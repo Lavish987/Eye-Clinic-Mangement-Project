@@ -1,7 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
+import React ,{useState} from 'react';
+import { Link } from 'react-router-dom';
+import {Button,Modal} from 'react-bootstrap';
 export default function Header(props) {
+  const [show, setShow] = useState(false);
+
+
+  function handleModal() {
+    show === true? setShow(false):setShow(true);
+  }
  return (
     <>
     <nav className="navbar navbar-expand-lg bg-light">
@@ -25,7 +31,28 @@ export default function Header(props) {
         
       </ul>
       <form className="d-flex" role="search">
-        {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""}
+
+        {/* {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""} */}
+
+        {props.l? 
+        <>
+          <Link className="btn btn-outline-success" custom_btn type="submit" onClick={() => handleModal()}>Login </Link>
+          <Modal show={show} onHide={()=>handleModal()}>
+          
+            <Modal.Header closeButton>
+              <h3 >Welcome!!</h3>
+            </Modal.Header>
+            <Modal.Body>Are you a Doctor or Patient?</Modal.Body>
+            <Modal.Footer>
+            <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Patient</Link>
+            <Link className="btn btn-outline-success" custom_btn type="submit" to={"/doctor"}>Doctor</Link>
+              
+            
+            </Modal.Footer>
+          </Modal>
+        </>
+        :""}
+
         {props.r?<Link className="btn btn-outline-success" custom_btn type="submit" to={"/signup"}>Register</Link>:""}
       </form>
     </div>
