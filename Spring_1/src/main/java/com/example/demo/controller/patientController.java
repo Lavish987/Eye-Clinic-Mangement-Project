@@ -17,6 +17,8 @@ import com.example.demo.repository.PatientRepository;
 import com.example.demo.service.JwtService;
 import com.example.demo.service.PatientService;
 
+import ch.qos.logback.classic.net.SyslogAppender;
+
 @RestController
 @RequestMapping("patient/")
 @CrossOrigin(origins = "*")
@@ -28,18 +30,21 @@ public class patientController {
 	@Autowired
 	PatientService patientService;
 	
+	
 	@GetMapping("get")
 	public List<Patient> getPatients(){
 		System.out.println("Hello");
-		return this.repo.findAll();
+	
+   	return this.repo.findAll();
 	}
 	@PostMapping("register")
 	public Patient persist(@RequestBody final Patient p){
 		return patientService.registerNewPatient(p);
 	}
-	@GetMapping("/auth")
+	@PostMapping("auth")
 	public String authenticate(@RequestBody JwtRequest jwtRequest) {
 		try {
+			System.out.println("Hello1");
 			JwtResponse jwtResponse = jwtService.createJwtToken(jwtRequest);
 			String t=jwtResponse.getJwtToken();
 			t="Token is -"+t;
