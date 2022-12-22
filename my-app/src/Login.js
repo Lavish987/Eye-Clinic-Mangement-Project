@@ -13,7 +13,7 @@ function Login() {
   const btnStyle = { margin: "10px 0px -5px" }
   const [loginDetail,setLoginDetail]=useState(
     {
-      username:'',
+      useremail:'',
       password:''
     }
   )
@@ -27,12 +27,12 @@ function Login() {
   }
   const handleFormSubmit=(event)=>{
     event.preventDefault();
-    if (loginDetail.username.trim()==="" || loginDetail.password===""){
-      alert("Username or password is required");
+    if (loginDetail.useremail.trim()==="" || loginDetail.password===""){
+      alert("Useremail or password is required");
       return;
     }
     try {
-      axios.post("http://localhost:8080/patient/auth", {patientName: loginDetail.username, patientPassword: loginDetail.password}).then((response)=>
+      axios.post("http://localhost:8080/patient/auth", {patientEmail: loginDetail.useremail, patientPassword: loginDetail.password}).then((response)=>
       {
         if (response.data!==""){
           setMessage("User login successful");
@@ -71,15 +71,15 @@ function Login() {
               
               <div className="form-group mt-3">
                 
-                <label htmlFor='username'>UserName</label>
+                <label htmlFor='useremail'>UserEmail</label>
                 <input
-                  autoComplete='username'
-                  type="text"
-                  id='username'
+                  autoComplete='useremail'
+                  type="email"
+                  id='useremail'
                   className="form-control mt-1"
-                  placeholder="Enter username"
-                  value={loginDetail.username}
-                  onChange={(e)=>{handleChange(e,'username')}}
+                  placeholder="Enter Email"
+                  value={loginDetail.useremail}
+                  onChange={(e)=>{handleChange(e,'useremail')}}
                   
 
                 />
