@@ -34,10 +34,11 @@ public class JwtService implements UserDetailsService {
 
     public JwtResponse createJwtToken(JwtRequest jwtRequest) throws Exception {
         String patientName = jwtRequest.getPatientName();
+        String patientEmail=jwtRequest.getPatientEmail();
         String patientPassword = jwtRequest.getPatientPassword();
-        authenticate(patientName, patientPassword);
+        authenticate(patientEmail, patientPassword);
 
-        UserDetails patientDetails = loadUserByUsername(patientName);
+        UserDetails patientDetails = loadUserByUsername(patientEmail);
         String newGeneratedToken = jwtUtil.generateToken(patientDetails);
 
         Patient patient = patientRepo.findByName(patientName);
@@ -45,17 +46,17 @@ public class JwtService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Patient patient = patientRepo.findByName(username);
+    public UserDetails loadUserByUsername(String useremail) throws UsernameNotFoundException {
+        Patient patient = patientRepo.findByEmail(useremail);
 
         if (patient != null) {
             return new org.springframework.security.core.userdetails.User(
-                    patient.getName(),
+                    patient.getEmail(),
                     patient.getPassword(),
                     getAuthority(patient)
             );
         } else {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with userEmail: " + useremail);
         }
     }
 
@@ -67,9 +68,9 @@ public class JwtService implements UserDetailsService {
         return authorities;
     }
 
-    private void authenticate(String patientName, String patientPassword) throws Exception {
+    private void authenticate(String patientEmail, String patientPassword) throws Exception {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(patientName, patientPassword));
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(patientEmail, patientPassword));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {

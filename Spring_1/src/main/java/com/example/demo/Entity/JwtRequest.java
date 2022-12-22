@@ -3,10 +3,18 @@ package com.example.demo.Entity;
 public class JwtRequest {
 
     private String patientName;
-    private String patientPassword;
+    private String patientEmail;
+    public String getPatientEmail() {
+		return patientEmail;
+	}
+
+	public void setPatientEmail(String patientEmail) {
+		this.patientEmail = patientEmail;
+	}
+
+	private String patientPassword;
 
     public String getPatientName() {
-    	System.out.println(patientName);
         return patientName;
     }
 
@@ -19,7 +27,7 @@ public class JwtRequest {
     }
 
     public void setPatientPassword(String patientPassword) {
-    	System.out.println(patientPassword);
+    
         this.patientPassword = patientPassword;
     }
 }

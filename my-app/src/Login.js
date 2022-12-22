@@ -111,10 +111,6 @@ function Login() {
           
         </div>
       </div>
-<<<<<<< HEAD
-=======
-      
->>>>>>> 902ba4a3fb0f604ee761bace7dd2db2813ed5b5f
     </div>
   )
 }

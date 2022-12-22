@@ -44,7 +44,7 @@ public class patientController {
 	@PostMapping("auth")
 	public String authenticate(@RequestBody JwtRequest jwtRequest) {
 		try {
-			System.out.println("Hello1");
+		
 			JwtResponse jwtResponse = jwtService.createJwtToken(jwtRequest);
 			String t=jwtResponse.getJwtToken();
 			t="Token is -"+t;
