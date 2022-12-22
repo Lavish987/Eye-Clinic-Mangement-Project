@@ -31,6 +31,13 @@ public class PatientService {
     
     public Patient registerNewPatient(Patient patient) {
         Role role = roleRepo.findByRoleName("Patient");
+        List <String> emails=patientRepo.getEmails();
+        for(String s:emails ) {
+        	if (patient.getEmail().equals(s)) {
+        		return null;
+        	}
+        	
+        }
         Set<Role> userRoles = new HashSet<>();
         try {
         	if(patient.getName()!=null && patient.getPassword()!=null) {
@@ -44,6 +51,7 @@ public class PatientService {
         }
         return patient;
       }
+    
 
     public String getEncodedPassword(String password) {
     	String encodingPassword=null;
