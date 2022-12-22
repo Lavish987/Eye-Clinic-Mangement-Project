@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Header from './MyComponent/Header'
-
+import Footer from './MyComponent/Footer'
+import FooterLogin from './MyComponent/FooterLogin'
 import { Box, Grid, Paper, TextField, } from '@material-ui/core'
 import Button from '@mui/material/Button';
 import { Link, redirect } from "react-router-dom"
@@ -110,6 +111,10 @@ function Login() {
           
         </div>
       </div>
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 902ba4a3fb0f604ee761bace7dd2db2813ed5b5f
     </div>
   )
 }
