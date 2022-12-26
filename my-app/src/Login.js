@@ -6,14 +6,15 @@ import { Box, Grid, Paper, TextField, } from '@material-ui/core'
 import Button from '@mui/material/Button';
 import { Link, redirect } from "react-router-dom"
 import axios from 'axios';
-import { toast } from 'react-toastify';
-
+import { ToastContainer,toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+import { doLogin } from './auth'
 function Login() {
   const paperStyle = { padding: 20, height: '60vh', width: 280, margin: "20px auto" }
   const btnStyle = { margin: "10px 0px -5px" }
   const [loginDetail,setLoginDetail]=useState(
     {
-      username:'',
+      useremail:'',
       password:''
     }
   )
@@ -25,24 +26,26 @@ function Login() {
       [field]:actualValue
   })
   }
+  const navigate=useNavigate();
   const handleFormSubmit=(event)=>{
     event.preventDefault();
-    if (loginDetail.username.trim()==="" || loginDetail.password===""){
-      alert("Username or password is required");
+    if (loginDetail.useremail.trim()=="" || loginDetail.password.trim()==""){
+      alert("Useremail or password is required");
       return;
     }
     try {
-      axios.post("http://localhost:8080/patient/auth", {patientName: loginDetail.username, patientPassword: loginDetail.password}).then((response)=>
+      axios.post("http://localhost:8080/patient/auth", {patientEmail: loginDetail.useremail, patientPassword: loginDetail.password}).then((response)=>
       {
         if (response.data!==""){
           setMessage("User login successful");
-          toast.success("User Login");
+          //save to the local storage
+          doLogin(response.data,()=>{
+            console.log("login detail is saved to the local storage");
+            navigate("/user/dashboard")
+          })
           
-          
-
-
          }else{
-          setMessage("Error occured")
+          setMessage("Invalid User");
          }
     
       }).catch(err=>{
@@ -71,15 +74,15 @@ function Login() {
               
               <div className="form-group mt-3">
                 
-                <label htmlFor='username'>UserName</label>
+                <label htmlFor='useremail'>Email</label>
                 <input
-                  autoComplete='username'
-                  type="text"
-                  id='username'
+                  autoComplete='useremail'
+                  type="email"
+                  id='useremail'
                   className="form-control mt-1"
-                  placeholder="Enter username"
-                  value={loginDetail.username}
-                  onChange={(e)=>{handleChange(e,'username')}}
+                  placeholder="Enter Email"
+                  value={loginDetail.useremail}
+                  onChange={(e)=>{handleChange(e,'useremail')}}
                   
 
                 />
@@ -107,6 +110,7 @@ function Login() {
               </p>
             </div>
             <div className="me">{message ? <p >{message}</p> : null}</div>
+          
           </form>
           
         </div>

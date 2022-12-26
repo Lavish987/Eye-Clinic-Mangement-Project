@@ -40,7 +40,7 @@ public class PatientService {
         }
         Set<Role> userRoles = new HashSet<>();
         try {
-        	if(patient.getName()!=null && patient.getPassword()!=null) {
+        	if(patient.getEmail()!=null && patient.getPassword()!=null && patient.getName()!=null) {
         		 userRoles.add(role);
         	        patient.setRole(userRoles);
         	        patient.setPassword(getEncodedPassword(patient.getPassword()));

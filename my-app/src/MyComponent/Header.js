@@ -1,9 +1,27 @@
-import React ,{useState} from 'react';
-import { Link } from 'react-router-dom';
+import React ,{useEffect, useState} from 'react';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {Button,Modal} from 'react-bootstrap';
+import { doLogout, getCurrentUserDetail, isLoggedIn } from '../auth';
 export default function Header(props) {
   const [show, setShow] = useState(false);
+  const [login,setLogin]=useState(false);
+  const [user,setUser]=useState(undefined);
+  const navigate=useNavigate();
+  const logout=()=>{
+    doLogout(()=>{
+      setLogin(false)
+      setUser(undefined)
+    })
+  
+  }
 
+  useEffect(()=>{
+        setLogin(isLoggedIn());
+        setUser(getCurrentUserDetail());
+  },[login])
+  
+
+  
 
   function handleModal() {
     show === true? setShow(false):setShow(true);
@@ -12,7 +30,7 @@ export default function Header(props) {
     <>
     <nav className="navbar navbar-expand-lg bg-light">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#"><b>Diana Eye Clinic</b></a>
+    <Link className="navbar-brand" type='submit' to={"/"}><b>Diana Eye Clinic</b></Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +40,10 @@ export default function Header(props) {
           {props.h?<Link className="nav-link active" aria-current="page" type="submit" to={"/"}>Home</Link>:""}
         </li>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">About Us</a>
+          <Link className="nav-link active" aria-current="page" type="submit" to={"/about"}>About Us</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Contact Us</a>
+          <Link className="nav-link active" aria-current="page" type="submit" to={"/contact"}>Contact Us</Link>
         </li>
         
         
@@ -33,7 +51,17 @@ export default function Header(props) {
       <form className="d-flex" role="search">
 
         {/* {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""} */}
-
+        {
+          login && (<>
+            <Link className="btn btn-outline-success" custom_btn >{user.email}</Link>
+          <Link className="btn btn-outline-success" custom_btn type="submit" onClick={logout} to={"/"}>Logout</Link>
+          
+          </>
+          )  
+        }
+      {
+        !login && (
+          <>
         {props.l? 
         <>
           <Link className="btn btn-outline-success" custom_btn type="submit" onClick={() => handleModal()}>Login </Link>
@@ -54,6 +82,9 @@ export default function Header(props) {
         :""}
 
         {props.r?<Link className="btn btn-outline-success" custom_btn type="submit" to={"/signup"}>Register</Link>:""}
+        </>
+        )
+}
       </form>
     </div>
   </div>

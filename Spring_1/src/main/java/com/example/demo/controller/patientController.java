@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,28 +32,38 @@ public class patientController {
 	PatientService patientService;
 	
 	
-	@GetMapping("get")
-	public List<Patient> getPatients(){
-		System.out.println("Hello");
+	@GetMapping("doget")
+	public List<Patient> getPatients(@RequestHeader("Secret") String secret){
+		if(secret.equals("LAVISH")) {
+			System.out.println("Hello");
+		   	return this.repo.findAll();
+		}
+		return null;
+	}
 	
-   	return this.repo.findAll();
+	@GetMapping("get")
+	public List<Patient> getPatients1(){
+		return this.repo.findAll();
 	}
 	@PostMapping("register")
 	public Patient persist(@RequestBody final Patient p){
 		return patientService.registerNewPatient(p);
 	}
 	@PostMapping("auth")
-	public String authenticate(@RequestBody JwtRequest jwtRequest) {
+	public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) {
 		try {
 		
 			JwtResponse jwtResponse = jwtService.createJwtToken(jwtRequest);
 			String t=jwtResponse.getJwtToken();
-			t="Token is -"+t;
-			return t;
+			String t1="Token is - "+t;
+			System.out.println(t1);
+			return jwtResponse;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		}
-		return null;
+		
+		
 	}
 //	@PutMapping("update")
 //	public Patient Update(@RequestBody  Patient pR )throws Exception {
