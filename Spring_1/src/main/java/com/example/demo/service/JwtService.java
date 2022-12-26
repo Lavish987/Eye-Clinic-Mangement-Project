@@ -41,7 +41,7 @@ public class JwtService implements UserDetailsService {
         UserDetails patientDetails = loadUserByUsername(patientEmail);
         String newGeneratedToken = jwtUtil.generateToken(patientDetails);
 
-        Patient patient = patientRepo.findByName(patientName);
+        Patient patient = patientRepo.findByEmail(patientEmail);
         return new JwtResponse(patient, newGeneratedToken);
     }
 

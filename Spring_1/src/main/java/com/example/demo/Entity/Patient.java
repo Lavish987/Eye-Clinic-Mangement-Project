@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Patient {
 @Id
@@ -76,6 +78,7 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
+@JsonIgnore
 public String getPassword() {
 	return password;
 }

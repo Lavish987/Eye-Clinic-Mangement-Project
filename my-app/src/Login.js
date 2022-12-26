@@ -6,8 +6,9 @@ import { Box, Grid, Paper, TextField, } from '@material-ui/core'
 import Button from '@mui/material/Button';
 import { Link, redirect } from "react-router-dom"
 import axios from 'axios';
-import { toast } from 'react-toastify';
-
+import { ToastContainer,toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+import { doLogin } from './auth'
 function Login() {
   const paperStyle = { padding: 20, height: '60vh', width: 280, margin: "20px auto" }
   const btnStyle = { margin: "10px 0px -5px" }
@@ -25,9 +26,10 @@ function Login() {
       [field]:actualValue
   })
   }
+  const navigate=useNavigate();
   const handleFormSubmit=(event)=>{
     event.preventDefault();
-    if (loginDetail.useremail.trim()==="" || loginDetail.password===""){
+    if (loginDetail.useremail.trim()=="" || loginDetail.password.trim()==""){
       alert("Useremail or password is required");
       return;
     }
@@ -36,13 +38,14 @@ function Login() {
       {
         if (response.data!==""){
           setMessage("User login successful");
-          toast.success("User Login");
+          //save to the local storage
+          doLogin(response.data,()=>{
+            console.log("login detail is saved to the local storage");
+            navigate("/user/dashboard")
+          })
           
-          
-
-
          }else{
-          setMessage("Error occured")
+          setMessage("Invalid User");
          }
     
       }).catch(err=>{
@@ -71,7 +74,7 @@ function Login() {
               
               <div className="form-group mt-3">
                 
-                <label htmlFor='useremail'>UserEmail</label>
+                <label htmlFor='useremail'>Email</label>
                 <input
                   autoComplete='useremail'
                   type="email"
@@ -107,6 +110,7 @@ function Login() {
               </p>
             </div>
             <div className="me">{message ? <p >{message}</p> : null}</div>
+          
           </form>
           
         </div>

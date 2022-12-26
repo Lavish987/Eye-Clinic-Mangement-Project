@@ -21,8 +21,14 @@ function Register() {
   const [address,setAddress]=useState("");
   const [message,setMessage]=useState("");
   const [err, setErr] = useState("")
+  const [iserror,setIserror]=useState(false);
   let handleSubmit = async (e) => {
     e.preventDefault();
+    if (iserror===true){
+      alert("Enter data correct");
+      return
+    }
+    
     try {
      const res = await axios.post("http://localhost:8080/patient/register", {name, email, password, mobile, address, gender, age,weight,height, occupation}, {
         
@@ -68,6 +74,7 @@ function Register() {
     data.forEach(row=>{
       if(row.email===email){
         setErr('User is already exists')
+        setIserror(true);
       }
       // if (err !== ""){
       // reset()
@@ -81,7 +88,7 @@ function Register() {
   const [data,setData]=useState([]);
   useEffect(()=>{
     
-    axios.get("http://localhost:8080/patient/get").then((response)=>{
+    axios.get("http://localhost:8080/patient/doget").then((response)=>{
   console.log(response);
   setData(response.data);
   });
@@ -97,7 +104,7 @@ function Register() {
     
 
 <div>
-    <Header r={false} h={false}/>
+    <Header r={false} />
 <div className='reg_adjust'>
       {/* <div className="container py-5 h-100"> */}
       <div className="row d-flex justify-content-center align-items-center h-100">
@@ -117,7 +124,7 @@ function Register() {
                     <div className="">
                       <div className="form-outline">
                       <label className="form-label" for="form3Example1m"> Name</label>
-                        <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => setName(e.target.value)} required/>
+                        <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => { setIserror(true);setName(e.target.value)}} required/>
                       </div>
                     </div>
                     <div className="form-outline mb-4">
