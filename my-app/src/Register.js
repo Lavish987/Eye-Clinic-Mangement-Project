@@ -88,7 +88,7 @@ function Register() {
   const [data,setData]=useState([]);
   useEffect(()=>{
     
-    axios.get("http://localhost:8080/patient/doget").then((response)=>{
+    axios.get("http://localhost:8080/patient/get").then((response)=>{
   console.log(response);
   setData(response.data);
   });
@@ -124,7 +124,7 @@ function Register() {
                     <div className="">
                       <div className="form-outline">
                       <label className="form-label" for="form3Example1m"> Name</label>
-                        <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => { setIserror(true);setName(e.target.value)}} required/>
+                        <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => {setName(e.target.value)}} required/>
                       </div>
                     </div>
                     <div className="form-outline mb-4">

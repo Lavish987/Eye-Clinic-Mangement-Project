@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -45,8 +46,13 @@ public class patientController {
 	public List<Patient> getPatients1(){
 		return this.repo.findAll();
 	}
+	@GetMapping("getByEmail/{email}")
+	public Patient getPatient(@PathVariable String email) {
+		return patientService.getByEmail(email);
+	}
 	@PostMapping("register")
 	public Patient persist(@RequestBody final Patient p){
+		
 		return patientService.registerNewPatient(p);
 	}
 	@PostMapping("auth")

@@ -49,6 +49,7 @@ public class PatientService {
         }catch(Exception e){
                e.printStackTrace();
         }
+    	
         return patient;
       }
     
@@ -65,7 +66,7 @@ public class PatientService {
     	return encodingPassword;
         
     }
-    public Patient getByName(String patientName) {
-    	return patientRepo.findByName(patientName);
+    public Patient getByEmail(String patientEmail) {
+    	return patientRepo.findByEmail(patientEmail);
     }
 }

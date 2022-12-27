@@ -78,7 +78,6 @@ public String getGender() {
 public void setGender(String gender) {
 	this.gender = gender;
 }
-@JsonIgnore
 public String getPassword() {
 	return password;
 }

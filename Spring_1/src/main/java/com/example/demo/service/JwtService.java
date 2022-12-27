@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Entity.JwtRequest;
 import com.example.demo.Entity.JwtResponse;
 import com.example.demo.Entity.Patient;
+import com.example.demo.Entity.PatientDto;
 import com.example.demo.repository.PatientRepository;
 import com.example.demo.util.JwtUtil;
 
@@ -42,7 +43,8 @@ public class JwtService implements UserDetailsService {
         String newGeneratedToken = jwtUtil.generateToken(patientDetails);
 
         Patient patient = patientRepo.findByEmail(patientEmail);
-        return new JwtResponse(patient, newGeneratedToken);
+        PatientDto patientDto=new PatientDto(patient);
+        return new JwtResponse(patientDto, newGeneratedToken);
     }
 
     @Override
