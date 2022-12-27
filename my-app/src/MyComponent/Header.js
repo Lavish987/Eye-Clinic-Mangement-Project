@@ -8,7 +8,9 @@ export default function Header(props) {
   const [user,setUser]=useState(undefined);
   const navigate=useNavigate();
   const logout=()=>{
+    
     doLogout(()=>{
+      navigate("/")
       setLogin(false)
       setUser(undefined)
     })
@@ -53,8 +55,8 @@ export default function Header(props) {
         {/* {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""} */}
         {
           login && (<>
-            <Link className="btn btn-outline-success" custom_btn >{user.email}</Link>
-          <Link className="btn btn-outline-success" custom_btn type="submit" onClick={logout} to={"/"}>Logout</Link>
+            <Link className='me1' to={"/user/profile-info"}>Welcome {user.name}</Link>
+          <button className="btn btn-outline-success" custom_btn type="submit" onClick={logout} >Logout</button>
           
           </>
           )  

@@ -2,20 +2,20 @@ package com.example.demo.Entity;
 
 public class JwtResponse {
 
-    private Patient patient;
+    private PatientDto patientDto;
     private String jwtToken;
 
-    public JwtResponse(Patient patient, String jwtToken) {
-        this.patient = patient;
+    public JwtResponse(PatientDto patientDto, String jwtToken) {
+        this.patientDto = patientDto;
         this.jwtToken = jwtToken;
     }
 
-    public Patient getPatient() {
-        return patient;
+    public PatientDto getPatientDto() {
+        return patientDto;
     }
 
-    public void setPatient(Patient patient) {
-        this.patient = patient;
+    public void setPatientDto(PatientDto patientDto) {
+        this.patientDto = patientDto;
     }
 
     public String getJwtToken() {
