@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,4 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
    @Query("Select email from Patient p")
    List <String> getEmails();
    Patient findByEmail(String email); 
+   @Query("Select p from Patient p where email=:email ")
+   Optional<Patient> findByEmailid(String email); 
+
 }
