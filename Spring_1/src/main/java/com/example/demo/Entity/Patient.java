@@ -123,6 +123,21 @@ public void setMobile(String mobile) {
 public String getAddress() {
 	return address;
 }
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+@Override
+public String toString() {
+	return "Patient [id=" + id + ", name=" + name + ", email=" + email + ", gender=" + gender + ", password=" + password
+			+ ", role=" + role + ", age=" + age + ", occupation=" + occupation + ", height=" + height + ", weight="
+			+ weight + ", mobile=" + mobile + ", address=" + address + "]";
+}
+
 public void setAddress(String address) {
 	this.address = address;
 }

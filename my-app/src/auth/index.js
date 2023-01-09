@@ -13,10 +13,19 @@ export const doLogout=(next)=>{
 }
 export const getCurrentUserDetail=()=>{
   if(isLoggedIn()){
-   return JSON.parse(localStorage.getItem("data")).patient;
+   return JSON.parse(localStorage.getItem("data")).patientDto;
   }
   else{
     return undefined;
   }
-
 }
+
+ export const getToken=()=>{
+    if(isLoggedIn()){
+     return JSON.parse(localStorage.getItem("data")).jwtToken;
+    }
+    else{
+      return undefined;
+    }
+  }
+

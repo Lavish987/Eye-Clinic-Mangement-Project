@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,8 +37,9 @@ public class patientController {
 	
 	@GetMapping("doget")
 	public List<Patient> getPatients(@RequestHeader("Secret") String secret){
+	
 		if(secret.equals("LAVISH")) {
-			System.out.println("Hello");
+			
 		   	return this.repo.findAll();
 		}
 		return null;
@@ -71,19 +74,22 @@ public class patientController {
 		
 		
 	}
-//	@PutMapping("update")
-//	public Patient Update(@RequestBody  Patient pR )throws Exception {
-//		String email=pR.getEmail();
-//		Optional<Patient > pR1=repo.findBy(email);
-//		if (!pR1.isPresent()) {
-//			throw new Exception("This User is Invalid");
-//		}
-//		repo.save(pR1.get());
-//		
-//		return pR1.get();
-//		
-//	}
-//	
+	@PutMapping("update")
+	public Patient Update(@RequestBody  Patient pR )throws Exception {
+		String email=pR.getEmail();
+		Optional<Patient > pR1=repo.findByEmailid(email);
+		if (!pR1.isPresent()) {
+			throw new Exception("This User is Invalid");
+		}
+		else {
+		pR.setId(pR1.get().getId());
+		repo.save(pR);
+		}
+		
+		return pR;
+		
+	}
+	
             
 	
 }

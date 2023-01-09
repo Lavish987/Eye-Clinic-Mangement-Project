@@ -88,7 +88,11 @@ function Register() {
   const [data,setData]=useState([]);
   useEffect(()=>{
     
-    axios.get("http://localhost:8080/patient/get").then((response)=>{
+    axios.get("http://localhost:8080/patient/doget",{
+      headers:{
+        'Secret': `LAVISH`
+      }
+    }).then((response)=>{
   console.log(response);
   setData(response.data);
   });
