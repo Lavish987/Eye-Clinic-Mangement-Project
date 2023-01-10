@@ -7,6 +7,8 @@ import Header from '../../MyComponent/Header'
 import UserDashboard from './UserDashboard';
 import "./Profile.css"
 import { getImageListItemBarUtilityClass } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { containerClasses } from '@mui/system';
 
 function ProfileInfo() {
        
@@ -18,6 +20,8 @@ function ProfileInfo() {
             setUserData(userdet);
             const tokennum=getToken();
             setToken(tokennum);
+            
+          
             const emailid=userdet.email;
         axios.get(`http://localhost:8080/patient/getByEmail/${emailid}`,
         {
@@ -29,6 +33,20 @@ function ProfileInfo() {
           })
        },[])
   const [msg,setMsg]=useState(null);
+
+  // let UpdatePass=async (e)=>{
+  //   e.preventDefault();
+  //   try{
+  //     const res=await axios.put(`http://localhost:8080/patient/updatePass/${formData.email}`,{password:pass},{
+  //       headers:{
+  //         "Content-Type":"application/json",
+  //         "Authorization" :`Bearer ${token}`
+  //       }
+  //     })
+  //   }catch(err){
+  //     console.log(err);
+  //   }
+  // }
     let handleSubmit= async(e)=>{
   e.preventDefault();
   try {
@@ -63,7 +81,7 @@ function ProfileInfo() {
 
   return (
     <>
-    <Header/>
+    <Header />
     <h1 style={{textAlign : "center",padding:"10px",color:"purple"}}>Profile</h1>
     <form className='form' onSubmit={handleSubmit}>
       {formData && (
@@ -118,6 +136,7 @@ function ProfileInfo() {
           <button type="submit" className="form-button">
         Update
       </button>
+      <div><Link to={"/user/updatePass"}>Update Password</Link></div>
        
         </>
       )}

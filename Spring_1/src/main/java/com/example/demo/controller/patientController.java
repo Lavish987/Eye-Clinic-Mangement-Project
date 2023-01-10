@@ -44,7 +44,10 @@ public class patientController {
 		}
 		return null;
 	}
-	
+	@GetMapping("getPass/{email}")
+	public String getPassword(@PathVariable String email) {
+		return this.repo.findByPassword(email);
+	}
 	@GetMapping("get")
 	public List<Patient> getPatients1(){
 		return this.repo.findAll();

@@ -26,8 +26,6 @@ public class PatientService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-    
     
     public Patient registerNewPatient(Patient patient) {
         Role role = roleRepo.findByRoleName("Patient");

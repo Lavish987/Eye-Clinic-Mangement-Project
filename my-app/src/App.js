@@ -13,6 +13,7 @@ import PrivateRoute from './RouteComponent/PrivateRoute';
 import ProfileInfo from './pages/userRoute/ProfileInfo';
 import Contact from './Contact';
 import About from './About';
+import UpdatePass from './pages/userRoute/updatePass';
 
 function App() {
   
@@ -27,8 +28,9 @@ function App() {
         <Route path='/user' element={<PrivateRoute/>}>
         <Route path='dashboard' element={<UserDashboard/>}/>
         <Route path='profile-info' element={<ProfileInfo/>}/>
+        <Route path='updatePass' element={<UpdatePass type={'update'}/>}/>
           </Route>
-
+        <Route path='forgetPass' element={<UpdatePass type={'forget'}/>}/>
        </Routes>
        </BrowserRouter>
   );

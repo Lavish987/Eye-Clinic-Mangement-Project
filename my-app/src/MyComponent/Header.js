@@ -2,6 +2,7 @@ import React ,{useEffect, useState} from 'react';
 import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {Button,Modal} from 'react-bootstrap';
 import { doLogout, getCurrentUserDetail, isLoggedIn } from '../auth';
+import { fabClasses } from '@mui/material';
 export default function Header(props) {
   const [show, setShow] = useState(false);
   const [login,setLogin]=useState(false);
@@ -38,26 +39,34 @@ export default function Header(props) {
     </button>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-          {props.h?<Link className="nav-link active" aria-current="page" type="submit" to={"/"}>Home</Link>:""}
+        {login && (<>
+      <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" type="submit" to={"/user/dashboard"}>Dashboard</Link>
         </li>
+        </>
+        )}
+        { !login && (<>
+        <li className="nav-item">
+        <Link className="nav-link active" aria-current="page" type="submit" to={"/"}>Home</Link>
+        </li>
+        </>
+         )}
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" type="submit" to={"/about"}>About Us</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link active" aria-current="page" type="submit" to={"/contact"}>Contact Us</Link>
         </li>
-        
+       
         
       </ul>
       <form className="d-flex" role="search">
 
         {/* {props.l? <Link className="btn btn-outline-success" custom_btn type="submit" to={"/login"}>Login</Link>:""} */}
         {
-          login && (<>
+          login && (<> 
             <Link className='me1' to={"/user/profile-info"}>Welcome {user.name}</Link>
           <button className="btn btn-outline-success" custom_btn type="submit" onClick={logout} >Logout</button>
-          
           </>
           )  
         }
