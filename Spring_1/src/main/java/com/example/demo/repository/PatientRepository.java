@@ -17,5 +17,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
    Patient findByEmail(String email); 
    @Query("Select p from Patient p where email=:email ")
    Optional<Patient> findByEmailid(String email); 
+   @Query("Select password from Patient p where email=:email")
+   String findByPassword(String email);
 
 }

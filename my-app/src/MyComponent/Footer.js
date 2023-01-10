@@ -8,58 +8,16 @@ export default function Footer() {
       <section className=''>
         <MDBContainer className='text-center text-md-start mt-5'>
           <MDBRow className='mt-3'>
-            <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
-              <h4 className='text-uppercase fw-bold mb-3'style={{paddingTop:"50px"}}>
+            <MDBCol md="3" lg="2" xl="3" className='mx-auto mb-2'>
+              <h4 className='text-uppercase fw-bold mb-3'style={{paddingTop:"30px"}}>
                 <MDBIcon icon="gem" className="me-3" />
                 Diana Eye Clinic 
               </h4>
-              <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
-              </p>
+
             </MDBCol>
 
-            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4 '>
-              <h6 className='text-uppercase fw-bold mb-4 mt-4'>Products</h6>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Angular
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  React
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Vue
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Laravel
-                </a>
-              </p>
-            </MDBCol>
-
-            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4 mt-4'>Useful links</h6>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Pricing
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Settings
-                </a>
-              </p>
-              <p>
-                <a href='#!' className='text-reset'>
-                  Orders
-                </a>
-              </p>
+            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-2'>
+              <h6 className='text-uppercase fw-bold mb-1 mt-1'>Useful links</h6>
               <p>
                 <a href='#!' className='text-reset'>
                   Help
@@ -67,21 +25,12 @@ export default function Footer() {
               </p>
             </MDBCol>
 
-            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-md-0 mb-1'>
-              <h6 className='text-uppercase fw-bold mb-4 mt-4'>Contact</h6>
+            <MDBCol md="4" lg="4" xl="4" className='mx-auto  mb-2'>
+              <h6 className='text-uppercase fw-bold mb-2 mt-2'>Contact</h6>
               <p>
-                <MDBIcon icon="home" className="me-1" />
-                      Lavish Chaddha SoftwareEngineer ,Pune
-              </p>
-              <p>
-                <MDBIcon icon="envelope" className="me-1" />
-                lavishchaddha284@gmailcom
-              </p>
-              <p>
-                <MDBIcon icon="phone" className="me-1" /> 9761270766
-              </p>
-              <p>
-                <MDBIcon icon="print" className="me-1" /> 6395104823
+                <MDBIcon icon="home" className="me-20" />
+                      Lavish Chaddha Software Engineer,Pune
+                      
               </p>
             </MDBCol>
           </MDBRow>
@@ -90,7 +39,7 @@ export default function Footer() {
 
       <div className='text-center p-2' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
         © 2022 Copyright:
-        <a className='text-reset fw-bold' href='#'>
+        <a className='text-reset fw-bold' href='http://localhost:3000'>
           DianaClinic.com
         </a>
       </div>
