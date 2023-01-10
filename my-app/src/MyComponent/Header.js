@@ -11,9 +11,7 @@ export default function Header(props) {
   const logout=()=>{
     
     doLogout(()=>{
-      navigate("/")
-      setLogin(false)
-      setUser(undefined)
+      navigate("/login")
     })
   
   }

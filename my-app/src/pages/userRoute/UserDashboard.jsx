@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 function UserDashboard() {
   const history = useNavigate();
-  
   return (
     <>
     <Header/>

@@ -34,19 +34,6 @@ function ProfileInfo() {
        },[])
   const [msg,setMsg]=useState(null);
 
-  // let UpdatePass=async (e)=>{
-  //   e.preventDefault();
-  //   try{
-  //     const res=await axios.put(`http://localhost:8080/patient/updatePass/${formData.email}`,{password:pass},{
-  //       headers:{
-  //         "Content-Type":"application/json",
-  //         "Authorization" :`Bearer ${token}`
-  //       }
-  //     })
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-  // }
     let handleSubmit= async(e)=>{
   e.preventDefault();
   try {

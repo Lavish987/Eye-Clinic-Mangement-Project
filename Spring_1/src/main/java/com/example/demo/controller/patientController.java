@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,6 +34,7 @@ public class patientController {
 	JwtService jwtService;
 	@Autowired
 	PatientService patientService;
+	@Autowired private PasswordEncoder passwordEncoder;
 	
 	
 	@GetMapping("doget")
@@ -44,9 +46,31 @@ public class patientController {
 		}
 		return null;
 	}
-	@GetMapping("getPass/{email}")
-	public String getPassword(@PathVariable String email) {
-		return this.repo.findByPassword(email);
+	@PutMapping("updatePass/{newPass}")
+	public Boolean updatePassword(@RequestBody Patient pR,@PathVariable String newPass)throws Exception {
+		String NewPass=passwordEncoder.encode(newPass);
+		String email=pR.getEmail();
+		String pass=pR.getPassword();
+		String encodePass=repo.findByPassword(email);
+		Optional<Patient > pR1=repo.findByEmailid(email);
+		if (!pR1.isPresent()) {
+			throw new Exception("This User is Invalid");
+		}
+		else {
+		String passUser=this.repo.findByPassword(email);
+		if (passwordEncoder.matches(pass, encodePass)) {
+		pR.setId(pR1.get().getId());
+		pR.setPassword(NewPass);
+		repo.save(pR);
+		return true;
+		}else {
+			return false;
+		}
+		
+		}
+		
+		
+	
 	}
 	@GetMapping("get")
 	public List<Patient> getPatients1(){
