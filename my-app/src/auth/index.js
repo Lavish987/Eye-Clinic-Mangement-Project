@@ -28,4 +28,24 @@ export const getCurrentUserDetail=()=>{
       return undefined;
     }
   }
-
+export const isDoctorLoggedIn=()=>{
+    let data=localStorage.getItem("data");
+    if (data!=null) return true;
+    else return false;
+}
+export const doDoctorLogin=(data,next)=>{
+    localStorage.setItem("data",data);
+    next()
+}
+export const doDoctorLogout=(next)=>{
+    localStorage.removeItem("data");
+    next()
+}
+export const getDoctor=()=>{
+  if(isLoggedIn()){
+   return localStorage.getItem("data");
+  }
+  else{
+    return undefined;
+  }
+}

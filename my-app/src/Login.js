@@ -70,7 +70,7 @@ function Login() {
         <div className="Auth-form-container">
           <form className="Auth-form" onSubmit={handleFormSubmit}>
             <div className="Auth-form-content">
-              <h3 className="Auth-form-title">Sign In</h3>
+              <h3 className="Auth-form-title">Patient Sign In</h3>
               
               <div className="form-group mt-3">
                 
@@ -106,7 +106,13 @@ function Login() {
                 </button>
               </div>
               <p className="forgot-password text-right mt-2">
-                 <Link  to={"/signup"}>Sign Up?</Link>
+                <div>
+              <Link style={{textDecoration:"none"}} to={"/doctor"}>Doctor Login</Link>
+              </div>
+              <div>
+                 <Link  style={{textDecoration:"none"}} to={"/signup"}>Sign Up?</Link>
+                 </div>
+
               </p>
             </div>
             <div className="me">{message ? <p >{message}</p> : null}</div>

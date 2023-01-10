@@ -10,29 +10,38 @@ function UpdatePass() {
     const [oldpass,setOldpass]=useState("");
     const [newpass,setNewpass]=useState("");
     const [conpass,setConpass]=useState("");
-    const [userPass,setUserPass] =useState("");
-    const [userData,setUserData] =useState("");
+    const [formData,setFormData] =useState("");
+    const [token,setToken]=useState("");
     useEffect(()=>{
-        const token=getToken();
-        setUserData(getCurrentUserDetail());
-        const userdat=getCurrentUserDetail()
-        axios.get(`http://localhost:8080/patient/getPass/${userdat.email}`,{
-            headers:{
-   'Authorization':`Bearer ${token}`
-            }
-        }).then((res)=>{
-            setUserPass(res.data)
-        }).catch(err=>console.log(err))
+        setToken(getToken());
+        setFormData(getCurrentUserDetail());
     },[])
-    let handleUpdate=(e)=>{
+    let handleUpdate= async(e)=>{
         e.preventDefault();
-        console.log(userPass)
-        console.log(oldpass)
-        if (userPass==oldpass){
-            alert("pass same")
-        }else{
-            alert("pass dif")
+        if (conpass!==newpass){
+            alert("New Password not matched with Confirm Password");
+            return;
         }
+    try{
+      const res=await axios.put(`http://localhost:8080/patient/updatePass/${newpass}`,{ name:formData.name, email:formData.email, password:formData.password, mobile:formData.mobile, address:formData.address, gender:formData.gender, age:formData.age,weight:formData.weight,height:formData.height, occupation:formData.occupation,password:oldpass},{
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization" :`Bearer ${token}`
+        }
+      })
+
+      if (res.status===200){
+        if (res.data==true){
+            alert("Password Updated")
+        }
+        else{
+            alert("Old Password Not Correct")
+        }
+      }
+      
+    }catch(err){
+      console.log(err);
+    }
     }
   return(
     <>
