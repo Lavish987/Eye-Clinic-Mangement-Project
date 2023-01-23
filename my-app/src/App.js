@@ -19,6 +19,11 @@ import DoctorDashboard from './pages/DoctorRoute/DoctorDashboard';
 import DoctorPrivateRoute from './RouteComponent/DoctorPrivateRoute';
 import DoctorInfo from './pages/DoctorRoute/DoctorInfo';
 
+import Chat from './PlateForm/Chat';
+import Interview from './PlateForm/Interview';
+import Report from './PlateForm/Report';
+import Appointment from './PlateForm/Appointment';
+
 function App() {
   
   return (
@@ -39,6 +44,15 @@ function App() {
         <Route path='dashboard' element={<DoctorDashboard/>}/>
         <Route path='doctor-info' element={<DoctorInfo/>}/>
           </Route>
+          <Route path="/form"element={<Interview/>}/>
+          <Route path="/report"element={<Report/>}/>
+          <Route path="/appointment"element={<Appointment/>}/>
+          
+      
+          
+      
+          
+          
        </Routes>
        </BrowserRouter>
   );

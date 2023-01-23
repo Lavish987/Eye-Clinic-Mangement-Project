@@ -1,0 +1,97 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+  }
+  .container{
+    display:flex;
+  }
+  main{
+    width: 100%;
+    padding: 20px;
+  }
+  .sidebar{
+  
+    background:#288681;
+    color: #fff;
+    height: 100vh;
+    width: 200px;
+    transition: all 0.5s;
+  }
+  .top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+  }
+  .logo{
+    padding-top: 20px;
+    font-size: 30px;
+  }
+  .bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+  }
+  .link{
+    display: flex;
+    color: rgb(244, 104, 104);
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+  }
+  .link:hover{
+    background:lightskyblue;
+    color: #000;
+    transition: all 0.5s;
+  }
+  
+  .icon, .link_text{
+    font-size: 20px;
+  }
+
+  .sidebar_and_main {
+    display: flex;
+    width: 100%;
+    height: 70%;
+    justify-content: center;
+  }
+
+  .main {
+    align-self: center;
+    vertical-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ss{
+   padding: 5px;
+   line-height: 4;
+
+  }
+  .question-answer-form {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .question-label, .answer-label{
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  .question-input, .answer-input {
+    border-radius: 5px;
+    border-color: #007bff;
+    padding: 10px;
+  }
+  .submit-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+  }
+  .submit-button:hover {
+    background-color: #0069d9;
+    cursor: pointer;
+  }
+  
+ 
