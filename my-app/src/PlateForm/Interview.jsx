@@ -1,34 +1,47 @@
 import React from 'react'
-import { Button, Form, FormControl } from 'react-bootstrap';
-
+import { Button, Card, Container, Form, FormControl } from 'react-bootstrap';
+import { CardBody, CardHeader } from 'reactstrap';
+import './Interview.css';
 
 function Interview() {
   return (
     
     <>
-   <Form>
+    <Container> 
+    <Card>
+      <CardHeader style={{textAlign:"center" ,color:'red'}}>
+       
+      <h3>INTERVIEW FORM</h3> </CardHeader>
+     <CardBody style={{backgroundColor:'#a8e36e'}}>
+         
+     <Form>
       <Form.Group controlId="formQuestion">
-        <Form.Label>1. Do you have any allergies?</Form.Label>
+        <Form.Label><span className='form_allignment'>1. Do you have any allergies?</span></Form.Label>
         <FormControl as="textarea" rows="3" placeholder="" />
 
 
-        <Form.Label>2. List all your medications you take?</Form.Label>
+        <Form.Label className='form_allignment'>2. List all your medications you take?</Form.Label>
         <FormControl as="textarea" rows="3" placeholder="" />
 
-        <Form.Label>3. List all your injuries/hospitalizations you have had?</Form.Label>
+        <Form.Label className='form_allignment'>3. List all your injuries/hospitalizations you have had?</Form.Label>
         <FormControl as="textarea" rows="3" placeholder="" />
 
-        <Form.Label>4. Do you wear glasses/lens?</Form.Label>
+        <Form.Label className='form_allignment'>4. Do you wear glasses/lens?</Form.Label>
         <FormControl as="textarea" rows="3" placeholder="" />
 
     
         
       </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button   variant="primary" type="submit">
         Submit Question
       </Button>
     </Form>
+          
+     </CardBody>
+    </Card>
+    </Container>
+   
       
     
     </>
