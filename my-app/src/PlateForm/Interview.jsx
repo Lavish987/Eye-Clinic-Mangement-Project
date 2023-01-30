@@ -7,8 +7,8 @@ function Interview() {
   return (
     
     <>
-    <Container> 
-    <Card>
+    <Container > 
+    <Card className="card_allignment">
       <CardHeader style={{textAlign:"center" ,color:'red'}}>
        
       <h3>INTERVIEW FORM</h3> </CardHeader>

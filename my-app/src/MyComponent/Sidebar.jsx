@@ -23,7 +23,7 @@ const Sidebar = (props) => {
     
     
     return (
-        <div className="containe-fluid">
+        <div className="container">
            <div style={{width: isOpen ? "200px" : "80px"}} className="sidebar">
                <div className="top_section">
 

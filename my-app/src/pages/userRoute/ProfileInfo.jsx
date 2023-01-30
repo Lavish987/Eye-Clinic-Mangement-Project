@@ -74,7 +74,7 @@ function ProfileInfo() {
     <>
       <Header />
 
-      <Container>
+      <Container className='card_allignment'>
         <Card>
           <CardHeader >
             <h1 style={{ textAlign: "center", padding: "10px", color: "purple" }}>Profile</h1>
