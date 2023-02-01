@@ -18,6 +18,7 @@ import DoctorLogin from './MyComponent/DoctorLogin';
 import DoctorDashboard from './pages/DoctorRoute/DoctorDashboard';
 import DoctorPrivateRoute from './RouteComponent/DoctorPrivateRoute';
 import DoctorInfo from './pages/DoctorRoute/DoctorInfo';
+import BackLogin from './RouteComponent/BackLogin';
 
 function App() {
   

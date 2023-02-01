@@ -85,6 +85,7 @@ function ProfileInfo() {
           </label>
           {msg && <p> {msg}</p>}
           <br />
+          
           <label className='form-label'>
             Contact:
             <input type="text" value={formData.mobile}  onChange={(e) => {setFormData({...formData,mobile:e.target.value})}}/>

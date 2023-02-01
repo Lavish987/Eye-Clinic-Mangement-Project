@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Entity.InterviewForm;
 import com.example.demo.Entity.JwtRequest;
 import com.example.demo.Entity.JwtResponse;
 import com.example.demo.Entity.Patient;
+import com.example.demo.repository.InterviewRepository;
 import com.example.demo.repository.PatientRepository;
+import com.example.demo.service.InterviewServices;
 import com.example.demo.service.JwtService;
 import com.example.demo.service.PatientService;
 
@@ -34,6 +37,8 @@ public class patientController {
 	JwtService jwtService;
 	@Autowired
 	PatientService patientService;
+	@Autowired
+	InterviewServices interviewService;
 	@Autowired private PasswordEncoder passwordEncoder;
 	
 	
@@ -46,6 +51,11 @@ public class patientController {
 		}
 		return null;
 	}
+	@PostMapping("interviewForm")
+	public InterviewForm registerInterviewForm(@RequestBody InterviewForm iForm) {
+		
+		return interviewService.registerForm(iForm);
+	}
 	@PutMapping("updatePass/{newPass}")
 	public Boolean updatePassword(@RequestBody Patient pR,@PathVariable String newPass)throws Exception {
 		String NewPass=passwordEncoder.encode(newPass);
@@ -57,7 +67,6 @@ public class patientController {
 			throw new Exception("This User is Invalid");
 		}
 		else {
-		String passUser=this.repo.findByPassword(email);
 		if (passwordEncoder.matches(pass, encodePass)) {
 		pR.setId(pR1.get().getId());
 		pR.setPassword(NewPass);
