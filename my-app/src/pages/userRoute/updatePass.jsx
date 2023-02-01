@@ -6,8 +6,6 @@ import { getCurrentUserDetail, getToken } from '../../auth';
 import Footer from '../../MyComponent/Footer';
 import Header from '../../MyComponent/Header';
 import "./Profile.css"
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/react-toastify.css'
 
 function UpdatePass() {
     const [oldpass,setOldpass]=useState("");
