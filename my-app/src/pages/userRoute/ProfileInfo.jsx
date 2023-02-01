@@ -71,100 +71,190 @@ function ProfileInfo() {
 
 
   return (
+
     <>
+
       <Header />
 
+
+
       <Container className='card_allignment'>
+
         <Card>
+
           <CardHeader >
+
             <h1 style={{ textAlign: "center", padding: "10px", color: "purple" }}>Profile</h1>
-            
+
+           
+
             </CardHeader>
+
           <CardBody style={{backgroundColor:"#b8cee8"}}>
-            
-            
+
+           
+
+           
+
+
 
 
               <form className='form' onSubmit={handleSubmit}>
+
                 {formData && (
+
                   <>
+
                     <div className='form-group'>
+
                       <label htmlFor='name' className='form-label'>
-                       <span style={{color:'red' }}> Name:</span> 
+
+                       <span style={{color:'red' }}> Name:</span>
+
                         <input  id="name" className='form-control' type="text" value={formData.name} onChange={(e) => { setFormData({ ...formData, name: e.target.value }) }} />
+
                       </label>
+
                     </div>
 
+
+
                     <div className='form-group'>
+
                       <label htmlFor='email' className='form-label'>
+
                         Email:
+
                         <input id="email" className='form-control' type="email" value={formData.email} onBlur={() => { handleMsg() }} onFocus={() => { handleEmail() }} readOnly />
 
+
+
                       </label>
+
                       </div>
+
                       {msg && <p> {msg}</p>}
+
                        
+
                        <div className='form-group'>                    
+
                          <label htmlFor='contact' className='form-label'>
+
                         Contact:
+
                         <input id="contact" className="form-control" type="text" value={formData.mobile} onChange={(e) => { setFormData({ ...formData, mobile: e.target.value }) }} />
+
                       </label>
+
                       </div>
-                    
+
+                   
+
                       <div className='form-group'>
+
                       <label htmlFor='occupation' className='form-label'>
+
                         Occupation:
+
                         <input id="occupation"  className="form-control" type="text" value={formData.occupation} onChange={(e) => { setFormData({ ...formData, occupation: e.target.value }) }} />
+
                       </label>
+
                       </div>
+
                       <label className='form-label'>
+
                         Weight:
+
                         <input type="text" className="form-control" value={formData.weight} onChange={(e) => { setFormData({ ...formData, weight: e.target.value }) }} />
+
                       </label>
 
+
+
                       <label className='form-label'>
+
                         Height:
+
                         <input type="text"  className="form-control" value={formData.height} onChange={(e) => { setFormData({ ...formData, height: e.target.value }) }} />
+
                       </label>
 
+
+
                       <label className='form-label'>
+
                         Age:
+
                         <input  type="text"  className="form-control" value={formData.age} onChange={(e) => { setFormData({ ...formData, age: e.target.value }) }} />
+
                       </label>
 
+
+
                       <label className='form-label'>
+
                         Gender
+
                         <input type="text" className="form-control"  value={formData.gender} onChange={(e) => { setFormData({ ...formData, gender: e.target.value }) }} />
+
                       </label>
 
+
+
                       <label className='form-label'>
+
                         Address:
+
                         <input type="text" className="form-control"value={formData.address} onChange={(e) => { setFormData({ ...formData, address: e.target.value }) }} />
+
                       </label>
+
+
 
                       <button type="submit" className="form-button">
+
                         Update
+
                       </button>
+
                       <div><Link to={"/user/updatePass"}>Update Password</Link></div>
-                      
+
+                     
+
                     </>
+
       )}
+
                   </form>
 
 
 
 
 
-        
+
+
+       
+
                   </CardBody>
+
         </Card>
+
       </Container>
 
 
 
+
+
       <Footer />
+
     </>
+
   )
+
 }
+
+
 
 export default ProfileInfo

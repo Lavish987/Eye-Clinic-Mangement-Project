@@ -25,11 +25,12 @@ export default function Footer() {
               </p>
             </MDBCol>
 
-            <MDBCol md="4" lg="4" xl="4" className='mx-auto  mb-2'>
+            <MDBCol md="3" lg="4" xl="4" className='mx-auto  mb-2'>
               <h6 className='text-uppercase fw-bold mb-2 mt-2'>Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-20" />
-                      Lavish Chaddha Software Engineer,Pune
+                      Lavish Chaddha Software Engineer,Pune ........
+                      Kshitiz Agrawal Software Engineer ,Pune
                       
               </p>
             </MDBCol>

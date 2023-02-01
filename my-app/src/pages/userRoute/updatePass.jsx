@@ -6,6 +6,7 @@ import { getCurrentUserDetail, getToken } from '../../auth';
 import Footer from '../../MyComponent/Footer';
 import Header from '../../MyComponent/Header';
 import "./Profile.css"
+
 function UpdatePass() {
     const [oldpass,setOldpass]=useState("");
     const [newpass,setNewpass]=useState("");
@@ -54,7 +55,7 @@ function UpdatePass() {
     </div>
     <div className='form-padd'>
     <label className='form-label' > New Password</label>
-    <input type="text" value={newpass}  onChange={(e)=> setNewpass(e.target.value)} required/>
+    <input type="password" value={newpass}  onChange={(e)=> setNewpass(e.target.value)} required/>
     </div>
     <div className='form-padd'>
     <label className='form-label'> Confirm Password</label>

@@ -22,10 +22,6 @@ function DoctorLogin() {
         return (
           <div>
             <Header l={false} h={false} />
-      
-      
-      
-      
             <div className='login_form' >
       
               <div className="Auth-form-container">

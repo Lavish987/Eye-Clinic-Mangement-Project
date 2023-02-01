@@ -13,7 +13,7 @@ function Register() {
   const [email,setEmail]=useState("");
   const [mobile,setMobile]=useState("");
   const [age,setAge]=useState("");
-  const [gender,setGender]=useState("");
+  const [gender,setGender]=useState('male');
   const [height,setHeight]=useState("");
   const [weight,setWeight]=useState("");
   const [occupation,setOccupation]=useState("");
@@ -21,11 +21,36 @@ function Register() {
   const [address,setAddress]=useState("");
   const [message,setMessage]=useState("");
   const [err, setErr] = useState("")
+  const [mobErr, setMobErr] = useState("")
+  const [isMobileErr,setIsMobileErr]=useState(false); 
   const [iserror,setIserror]=useState(false);
+  const [error,setError]=useState("");
   let handleSubmit = async (e) => {
     e.preventDefault();
     if (iserror===true){
-      alert("Enter data correct");
+      alert("Enter Correct Email");
+      return
+    }
+    const mobileRegex = /^\d{10}$/;
+    if (!mobileRegex.test(mobile)) {
+      alert('Please enter a valid 10-digit mobile number.');
+      return
+    }
+   const Regex = /^\d+$/;
+    if (!Regex.test(height)) {
+      alert('Please enter a valid height value.');
+      return
+    }
+    if (!Regex.test(age)) {
+      alert('Please enter a valid age value.');
+      return
+    }
+    if (!Regex.test(weight)) {
+      alert('Please enter a valid weight value.');
+      return
+    }
+    if(isMobileErr===true){
+      alert("Enter Mobile No. which is not registered")
       return
     }
     
@@ -68,18 +93,33 @@ function Register() {
          setHeight("");
          setOccupation("");
          setErr("");
+         setMobErr("");
   }
   const validateUser=()=>{
     if (email && data){
     data.forEach(row=>{
       if(row.email===email){
-        setErr('User is already exists')
+        setErr('User Email is already exists')
         setIserror(true);
       }
       // if (err !== ""){
       // reset()
       // }
     })
+  .catch(err=>{
+    console.log(err);
+  })
+    }
+  }
+  const validateUserNumber=()=>{
+    if (mobile && data){
+    data.forEach(row=>{
+      if(row.mobile===mobile){
+        setMobErr('User Mobile No. is already exists')
+        setIsMobileErr(true);
+      }
+    }
+    )
   .catch(err=>{
     console.log(err);
   })
@@ -122,40 +162,40 @@ function Register() {
               </div>
               <div className="col-xl-6">
                 <div className="card-body p-md-5 text-black">
-                  <h3 className="mb-5 text-uppercase"> Registration Form</h3>
+                  <h3 style={{textAlign:"center"}}className="mb-4 text-uppercase "> Registration Form</h3>
                   <form onSubmit={handleSubmit}>
                   <div className="row">
                     <div className="">
-                      <div className="form-outline">
+                      <div className="form-outline mb-3">
                       <label className="form-label" for="form3Example1m"> Name</label>
                         <input type="text" id="form3Example1m" className="form-control form-control-lg" value={name} placeholder='Enter Full Name' onChange={(e) => {setName(e.target.value)}} required/>
                       </div>
                     </div>
                     <div className="form-outline mb-4">
                     <label className="form-label" for="form3Example99">Email ID</label>
-                    <input type="Email" id="form3Example99" className="form-control form-control-lg" value={email} placeholder='Enter Email'  onChange={(e) => {setErr("") ;setEmail(e.target.value)}} required/>
-                    {err && <p> {err}</p>}
+                    <input type="Email" id="form3Example99" className="form-control form-control-lg" value={email} placeholder='Enter Email' onBlur={validateUser} onChange={(e) => {setErr("") ;setIserror(false);setEmail(e.target.value)}} required/>
+                    {err && <p>{err}</p>}
                   </div>
 
                     <div className="">
-                      <div className="form-outline">
+                      <div className="form-outline mb-3">
                       <label className="form-label" for="form3Example1n">Password</label>
-                        <input type="password" id="form3Example1n" className="form-control form-control-lg" value={password} placeholder='Enter Password' onFocus={validateUser}  onChange={(e) => setPassword(e.target.value)} required/>
+                        <input type="password" id="form3Example1n" className="form-control form-control-lg" value={password} placeholder='Enter Password'   onChange={(e) => setPassword(e.target.value)} required/>
                         
                       </div>
                     </div>
                   </div>
                   <div className="form-outline mb-4">
                   <label className="form-label" for="form3Example9">Mobile</label>
-                    <input type="text" id="form3Example9" className="form-control form-control-lg" value={mobile} placeholder='Enter Mobile NO.' onChange={(e) => setMobile(e.target.value)} required/>
-                    
+                    <input type="text" id="form3Example9" className="form-control form-control-lg" value={mobile} onBlur={()=>{validateUserNumber()} } placeholder='Enter Mobile NO.' onChange={(e) => {setIsMobileErr(false);setMobErr("");setMobile(e.target.value)}} required/>
+                    {mobErr && <p>{mobErr}</p>}
                   </div>
 
 
                   <div className="row">
                     <div className="col-md-6 mb-4">
                       <div className="form-outline">
-                      <label className="form-label" for="form3Example1m1">Height</label>
+                      <label className="form-label" for="form3Example1m1">Height(cms)</label>
                         <input type="text" id="form3Example1m1" className="form-control form-control-lg" value={height} placeholder='Enter Height' onChange={(e) => setHeight(e.target.value)} required/>
                         
                       </div>
@@ -181,9 +221,20 @@ function Register() {
                     
                   </div>
 
-                  <div className="form-outline mb-4">
-                  <label className="form-label" for="form3Example8">Gender</label>
-                    <input type="text" id="form3Example8" className="form-control form-control-lg" value={gender} placeholder='Enter Gender' onChange={(e) => setGender(e.target.value)} required/>
+                  <div className="form-outline mb-4 " >Gender &nbsp;&nbsp;
+                  <input 
+        type="radio" 
+        value="male" 
+        checked={gender === 'male'} 
+        onChange={(e)=>{setGender(e.target.value)}}
+      /> Male &nbsp;
+      <input 
+        type="radio" 
+        value="female" 
+        checked={gender === 'female'} 
+        onChange={(e)=>{setGender(e.target.value)}}
+      /> Female &nbsp;
+
                     
                   </div>
 
