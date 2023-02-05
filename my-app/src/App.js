@@ -19,6 +19,7 @@ import DoctorDashboard from './pages/DoctorRoute/DoctorDashboard';
 import DoctorPrivateRoute from './RouteComponent/DoctorPrivateRoute';
 import DoctorInfo from './pages/DoctorRoute/DoctorInfo';
 import BackLogin from './RouteComponent/BackLogin';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -26,6 +27,7 @@ function App() {
   
   return (
     <BrowserRouter>
+    <ToastContainer/>
        <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/signup' element={<Register/>}/>
