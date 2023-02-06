@@ -15,9 +15,6 @@ import { NavLink } from 'react-router-dom';
 
 
 const Sidebar = (props) => {
-    const children = props.children;
-    
-
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
     
@@ -28,7 +25,7 @@ const Sidebar = (props) => {
                <div className="top_section">
 
                 
-                   <div style={{display: isOpen ? "block" : "none",backgroundImage:process.env.PUBLIC_URL+"eye.jpg"}} className="logo" ><img height="50px" width="150px"src={process.env.PUBLIC_URL+"/eye.jpg"}/></div>
+                   <div style={{display: isOpen ? "block" : "none"}} className="logo" ><img height="50px" width="150px"src={process.env.PUBLIC_URL+"/eye.jpg"}/></div>
                    <div style={{marginLeft: isOpen ? "80px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
@@ -70,7 +67,6 @@ const Sidebar = (props) => {
              
            </div>
            </div>
-           <main>{children}</main>
         </div>
     );
 };

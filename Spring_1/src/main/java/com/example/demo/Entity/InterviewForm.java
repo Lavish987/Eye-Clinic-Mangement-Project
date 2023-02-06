@@ -17,8 +17,6 @@ public class InterviewForm {
 	private String ques2;
 	private String ques3;
 	private String ques4;
-	private String ques5;
-	private String ques6;
 	public int getId() {
 		return id;
 	}
@@ -55,33 +53,19 @@ public class InterviewForm {
 	public void setQues4(String ques4) {
 		this.ques4 = ques4;
 	}
-	public String getQues5() {
-		return ques5;
-	}
-	public void setQues5(String ques5) {
-		this.ques5 = ques5;
-	}
-	public InterviewForm() {
+		public InterviewForm() {
 		
 	}
-	public InterviewForm(String email, String ques1, String ques2, String ques3, String ques4, String ques5,
-			String ques6) {
+	public InterviewForm(String email, String ques1, String ques2, String ques3, String ques4) {
 		super();
 		this.email = email;
 		this.ques1 = ques1;
 		this.ques2 = ques2;
 		this.ques3 = ques3;
 		this.ques4 = ques4;
-		this.ques5 = ques5;
-		this.ques6 = ques6;
+
 	}
-	public String getQues6() {
-		return ques6;
-	}
-	public void setQues6(String ques6) {
-		this.ques6 = ques6;
-	}
-	
+		
 	
 
 }

@@ -1,10 +1,17 @@
 .form_allignment{
     color:blue;
-    text-align: center;
+    /* text-align: center; */
+
 }
 .card_allignment{
  
-    display:flex,
-
+    /* display:flex,*/
+    margin-left: -200px;
+    
+}
+.container_allignment{
+ 
+    /* display:flex, */
+    margin-left: -200px;
     
 }
