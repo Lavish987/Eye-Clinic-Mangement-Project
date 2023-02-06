@@ -84,7 +84,7 @@ function ProfileInfo() {
 
           <CardHeader >
 
-            <h1 style={{ textAlign: "center", padding: "10px", color: "purple" }}>Profile</h1>
+            <h1 style={{ textAlign: "center", padding: "10px", color: "purple" }}>PROFILE</h1>
 
            
 
@@ -99,7 +99,7 @@ function ProfileInfo() {
 
 
 
-              <form className='form' onSubmit={handleSubmit}>
+              <form  onSubmit={handleSubmit}>
 
                 {formData && (
 

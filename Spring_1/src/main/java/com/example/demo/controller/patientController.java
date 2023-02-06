@@ -51,9 +51,9 @@ public class patientController {
 		}
 		return null;
 	}
-	@PostMapping("interviewForm")
-	public InterviewForm registerInterviewForm(@RequestBody InterviewForm iForm) {
-		
+	@PostMapping("interviewForm/{email}")
+	public InterviewForm registerInterviewForm(@RequestBody InterviewForm iForm,@PathVariable String email) {
+		iForm.setEmail(email);
 		return interviewService.registerForm(iForm);
 	}
 	@PutMapping("updatePass/{newPass}")
