@@ -14,8 +14,8 @@ function DoctorDashboard() {
       <DoctorSidebar setView={setView}/>
       <div className="main">
         {view==="Welcome"?<h1>"Welcome to Dashboard"</h1>:null}
-        {view === "PatientReport" ?  <PatientForm/>: null}
-        {view==="PatientForms"?<PatientReport/>:null}
+        {view === "PatientReport" ?  <PatientReport/>: null}
+        {view==="PatientForms"?<PatientForm/>:null}
         {view==="Appointment"?<DoctorApponiment/>:null}
       </div>
     </div>
