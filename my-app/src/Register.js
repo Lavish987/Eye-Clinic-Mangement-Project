@@ -1,5 +1,6 @@
 
 import Header from './MyComponent/Header'
+ import {toast} from 'react-toastify'
 import Footer from './MyComponent/Footer'
 import {Grid,Paper,TextField,} from'@material-ui/core'
 import Button from '@mui/material/Button';
@@ -7,6 +8,7 @@ import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import userEvent from '@testing-library/user-event';
+
 
 function Register() {
   const [name,setName]=useState("");
@@ -73,7 +75,19 @@ function Register() {
          setWeight("");
          setHeight("");
          setOccupation("");
-         setMessage("User created successfully");
+         
+        //  setMessage("User created successfully");
+
+        toast.success('Registered Successfully', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          });
        } else {
          setMessage("Some error occured");
        }
@@ -94,6 +108,8 @@ function Register() {
          setOccupation("");
          setErr("");
          setMobErr("");
+         toast("Reset Successfully")
+         
   }
   const validateUser=()=>{
     if (email && data){
@@ -144,7 +160,7 @@ function Register() {
     
       
      
-
+    
     
 
 <div>
@@ -250,10 +266,10 @@ function Register() {
 
 
                   <div className="d-flex justify-content-end pt-3">
-                    <button type="button" className="btn btn-light btn-lg" onClick={reset}>Reset all</button>
+                    <button type="button"style={{ color:'white', backgroundColor:'#0dcaf099'}} className="btn btn-light btn-lg" onClick={reset}>Reset all</button>
                     <button type="submit" className="btn btn-warning btn-lg ms-2">Submit form</button>
                   </div>
-
+  
                   <div >{message ? <p>{message}</p> : null}</div>
               </form>
 

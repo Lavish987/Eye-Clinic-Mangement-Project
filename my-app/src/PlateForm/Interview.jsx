@@ -2,11 +2,28 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { Button, Card, Container, Form, FormControl } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 import { CardBody, CardHeader } from 'reactstrap';
 import './Interview.css';
 import {getCurrentUserDetail, getToken} from '../auth'
 
 function Interview() {
+<<<<<<< HEAD
+
+  const submitForm=()=>{
+    toast.success('Data Stored Successfully!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+      });
+  }
+
+=======
      const [formData,setFormData]=useState({
      ques1:"",
      ques2:"",
@@ -31,6 +48,7 @@ function Interview() {
       }
     }) 
   }
+>>>>>>> 68372708724ee1735d653a7b6cbb92ba832f5949
   return (
     
     <>
@@ -39,6 +57,22 @@ function Interview() {
       <h3 style={{textAlign:"center" ,color:'red'}}>INTERVIEW FORM</h3>
      <CardBody style={{backgroundColor:'#a8e36e'}}>
          
+<<<<<<< HEAD
+     <Form onSubmit={submitForm}>
+      <Form.Group controlId="formQuestion">
+        <Form.Label><span className='form_allignment'>1. Do you have any allergies?</span></Form.Label>
+        <FormControl as="textarea" rows="3" placeholder="" required />
+
+
+        <Form.Label className='form_allignment'>2. List all your medications you take?</Form.Label>
+        <FormControl as="textarea" rows="3" placeholder="" required />
+
+        <Form.Label className='form_allignment'>3. List all your injuries/hospitalizations you have had?</Form.Label>
+        <FormControl as="textarea" rows="3" placeholder="" required/>
+
+        <Form.Label className='form_allignment'>4. Do you wear glasses/lens?</Form.Label>
+        <FormControl as="textarea" rows="3" placeholder="" required />
+=======
      <Form onSubmit={handleForm}>
       <Form.Group controlId="formQuestion">
         <Form.Label><span className='form_allignment'>1. Do you have any allergies?</span></Form.Label>
@@ -53,20 +87,21 @@ function Interview() {
 
         <Form.Label className='form_allignment'>4. Do you wear glasses/lens?</Form.Label>
         <FormControl as="textarea" rows="3" placeholder="" value={formData.ques4} onChange={(e)=>{setFormData({...formData,ques4:e.target.value})}}/>
+>>>>>>> 68372708724ee1735d653a7b6cbb92ba832f5949
 
     
         
       </Form.Group>
 
-      <Button   variant="primary" type="submit">
-        Submit Question
+      <Button type='Submit'  variant="primary" type="submit" onSubmit={submitForm}>
+         Submit Question
       </Button>
     </Form>
           
      </CardBody>
     </Card>
     </Container>
-   
+  
       
     
     </>
