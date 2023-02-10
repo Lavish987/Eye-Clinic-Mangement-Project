@@ -1,8 +1,12 @@
 import React from 'react'
-
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {Button} from 'react-bootstrap'
 function PatientForm() {
   return (
-    <div>PatientForm</div>
+    <>
+    <h1 style={{}}>Patients Forms</h1>
+    <Button>Submit</Button>
+    </>
   )
 }
 
