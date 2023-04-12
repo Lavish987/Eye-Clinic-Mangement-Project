@@ -70,7 +70,7 @@ function Interview() {
         
       </Form.Group>
 
-      <Button type='Submit'  variant="primary" type="submit">
+      <Button type='Submit'  variant="primary">
          Submit Question
       </Button>
     </Form>
@@ -82,8 +82,6 @@ function Interview() {
       
     
     </>
-
-
   )
 }
 
